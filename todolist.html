@@ -1,0 +1,26 @@
+<html ng-app="myapp">
+<head>
+    <title>todoapp</title>
+    <script src="angular.min.js"></script>
+    <script src="todo.js"></script>
+</head>
+<body ng-controller="todoctrl as c1">
+        <div>
+    <h1>to do app</h1>
+        <p>todo task:<input type="text" ng-model="c1.todoin" /></p>
+    </div>
+        <button ng-click="c1.addthread()">add</button>
+     <div>
+         <p>todo list:</p>
+         <button ng-hide="c1.editable" ng-click="c1.editthread()">edit</button>
+          <button ng-show="c1.editable" ng-click="c1.editthread()">done</button>
+        <ol>
+            <li ng-repeat="i in c1.task track by $index">
+                <span ng-hide="c1.editable" ng-bind="i"></span> 
+                <input ng-show="c1.editable" ng-model="i" type="text" />
+                <button ng-click="c1.remove($index)" ng-hide="c1.editable">delete</button>
+            </li>
+        </ol>
+         </div>
+</body>
+</html>
